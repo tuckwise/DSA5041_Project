@@ -6,6 +6,8 @@
 #'
 #' @return returns a list of the x & y vectors in a data frame, the alpha value, the p-value of the test test, and the confidence interval for the difference of the means
 #' @export
+#' @importFrom stats t.test
+#'
 #'
 #' @examples \dontrun{myConstructor(x, y, 0.05)}
 myConstructor <- function(x, y, alpha) {

@@ -5,6 +5,7 @@
 #'
 #' @return returns the data frame as a kable table, as well as various parameters (p-value, alpha, confidenc interval)
 #' @export
+#' @importFrom kableExtra kable
 #'
 #' @examples \dontrun{print.Rttest(x)}
 print.Rttest <- function(x, ...) {
