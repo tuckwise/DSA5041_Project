@@ -1,3 +1,13 @@
+#' myConstructor
+#'
+#' @param x a vector of values
+#' @param y a vector of values
+#' @param alpha a significance level less than 1
+#'
+#' @return returns a list of the x & y vectors in a data frame, the alpha value, the p-value of the test test, and the confidence interval for the difference of the means
+#' @export
+#'
+#' @examples \dontrun{myConstructor(x, y, 0.05)}
 myConstructor <- function(x, y, alpha) {
 
   # Perform two-sample t-test assuming equal variances
