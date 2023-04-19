@@ -18,5 +18,5 @@ returns the data frame as a kable table, as well as various parameters (p-value,
 print.Rttest
 }
 \examples{
-\dontrun{print.Rttest(x)}
+\dontrun{print(x)}
 }

@@ -20,56 +20,8 @@ library(DSA5041Project)
 
 
 # myConstructor
+
 This function takes in two vectors of varying lengths and a significance level and performs a 2 sample t.test. It ouputs a dataframe of the two vectors, the significance level, the confidence interval from the test.
-```{r}
-myConstructor <- function(x, y, alpha) {
-
-  # Perform two-sample t-test assuming equal variances
-  ttest_result <- t.test(x, y, var.equal = TRUE)
-
-  # Calculate confidence interval
-  conf_int <- ttest_result$conf.int
-
-  # Calculate p-value
-  p_value <- ttest_result$p.value
-
-  # Create a data frame containing x and y
-  max_length <- max(length(x), length(y))
-  df <- data.frame("X" = rep(NA, max_length), "Y" = rep(NA, max_length))
-  df[1:length(x), "X"] <- x
-  df[1:length(y), "Y"] <- y
-
-  # Create a named list with the data frame, alpha, confidence interval, and p-value
-  result <- list(
-    data = df,
-    alpha = alpha,
-    conf_int = conf_int,
-    p_value = p_value
-  )
-
-  # Set the class of the list to "Rttest"
-  class(result) <- "Rttest"
-
-  return(result)
-}
-```
-
-
-# print.Rttest
-
-This function is a method of the generic function "print()." When print is called on an Rttest class object, this method will output the dataframe, alpha, confidence interval, and p-value.
-```{r}
-print.Rttest <- function(x, ...) {
-  cat("\nData Frame:\n")
-  print(kableExtra::kable(x$data, format = 'simple'))
-  cat("\nAlpha: ", x$alpha, "\n")
-  cat("\nConfidence Interval for mu_x - mu_y: [", x$conf_int[1], ", ", x$conf_int[2], "]\n")
-  cat("\nP-value: ", x$p_value, "\n")
-}
-```
-
-
-
 
 ```{r}
 set.seed(21);x <-rnorm(30,5,2); set.seed(23); y<- rnorm(30, 3,2); alpha <- 0.05
@@ -77,8 +29,19 @@ obj <- myConstructor(x=x,y=y,alpha = 0.05)
 class(obj)
 ```
 
+# print.Rttest
+
+This function is a method of the generic function "print()." When print is called on an Rttest class object, this method will output the dataframe, alpha, confidence interval, and p-value.
 
 ``` {r}
 print(obj)
+```
+
+# plot.Rttest
+
+This function is a method of the generic function "plot()." When it is supplied with an Rttest class object, it returns a side-by-side boxplot of the variables in the object.
+
+```{r}
+plot(obj)
 ```
 
