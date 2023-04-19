@@ -7,7 +7,7 @@
 #' @export
 #' @importFrom kableExtra kable
 #'
-#' @examples \dontrun{print.Rttest(x)}
+#' @examples \dontrun{print(x)}
 print.Rttest <- function(x, ...) {
   cat("\nData Frame:\n")
   print(kableExtra::kable(x$data, format = 'simple'))
